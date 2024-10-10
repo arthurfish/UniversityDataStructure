@@ -373,6 +373,34 @@ object Expr4 {
   }
 
   class ArbitraryPrecisionNumber{
+    sealed trait Node
+    case class Empty() extends Node
+    case class NonEmpty[A](head: A, tail: Empty | NonEmpty[A]) extends Node
 
+    var listOfNumber:
+    
+    def cons[A](head: A, tail: Empty | NonEmpty[A]): NonEmpty[A] = {
+      NonEmpty(head, tail)
+    }
+    def foldLeft[A, B](node: NonEmpty[A], reducer: (A, B) => B, zeroElement: B): B = {
+      @tailrec
+      def foldLeftRec(currNode: Empty | NonEmpty[A], reducer: (A, B) => B, acc: B): B = {
+        currNode match
+          case Empty() => acc
+          case NonEmpty(head, tail) => foldLeftRec(tail, reducer, reducer(head, acc))
+      }
+      foldLeftRec(node, reducer, zeroElement)
+    }
+
+    def this(numberString: String) = {
+      @tailrec
+      def construct(s: String, accList: Node): Node = {
+        s match {
+          case head +: tail => construct(tail, NonEmpty(head, accList))
+          case Nil => accList
+        }
+      }
+      this.head = construct(numberString, Empty)
+    }
   }
 }
