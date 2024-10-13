@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/UniversityDataStructure.iml" filepath="$PROJECT_DIR$/UniversityDataStructure.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PListProject.iml" filepath="$PROJECT_DIR$/.idea/modules/PListProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PListProject.PListProject-build.iml" filepath="$PROJECT_DIR$/.idea/modules/PListProject.PListProject-build.iml" />
     </modules>
   </component>
 </project>
