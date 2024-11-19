@@ -1,12 +1,12 @@
-import PList.*
+import PList_java_ver1.*
 
 import scala.annotation.{tailrec, targetName}
 
 object Expr4_ArbitraryPrecisionNumber{
-  def fromString(s: String): Expr4_ArbitraryPrecisionNumber = Expr4_ArbitraryPrecisionNumber(PList.createIntPList(s).reversed())
+  def fromString(s: String): Expr4_ArbitraryPrecisionNumber = Expr4_ArbitraryPrecisionNumber(PList_java_ver1.createIntPList(s).reversed())
 }
 
-case class Expr4_ArbitraryPrecisionNumber(numberList: PList[Int]){
+case class Expr4_ArbitraryPrecisionNumber(numberList: PList_java_ver1[Int]){
   val base: Int = 10
 
   override def toString: String = numberList.reversed().toString
@@ -16,7 +16,7 @@ case class Expr4_ArbitraryPrecisionNumber(numberList: PList[Int]){
     val thatLen = that.numberList.getLength()
     val resultLen = math.max(thisLen, thatLen)
     val tuples = this.numberList.padding(0, resultLen) zip that.numberList.padding(0, resultLen)
-    val (reversedResult, carry) = tuples.foldLeft((Nil, 0): (PList[Int], Int)) { case ((a, b), (acc, carry)) => (Cons((a + b + carry) % base, acc), (a + b + carry) / base) }
+    val (reversedResult, carry) = tuples.foldLeft((Nil, 0): (PList_java_ver1[Int], Int)) { case ((a, b), (acc, carry)) => (Cons((a + b + carry) % base, acc), (a + b + carry) / base) }
     val result = reversedResult.reversed()
     val carryAppended = if carry != 0 then result.appended(Cons(carry, Nil)) else result
     return Expr4_ArbitraryPrecisionNumber(carryAppended)
