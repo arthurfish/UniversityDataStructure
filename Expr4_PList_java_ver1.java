@@ -1,3 +1,6 @@
+//编写程序，实现顺序表、单链表、双链表、单循环链表和双循环链表的操作。
+//（2）在（1）的基础上，编写程序，实现两个长整数的加、减和乘运算。
+
 import java.util.function.Supplier;
 
 public class PList_java_ver1 {
