@@ -1,6 +1,5 @@
 import java.lang.Integer.max
 import java.util.*
-import java.util.ArrayDeque
 
 sealed interface BinaryTree<T>
 data class NonEmpty<T>(val left: BinaryTree<T>, val value: T, val right: BinaryTree<T>): BinaryTree<T>
@@ -70,8 +69,29 @@ object BinaryTreeOperations {
         else return 0
     }
 
-    fun <T> calculateNodeDegree(tree: BinaryTree<T>): Int {
-
+    /**
+     * @return Triple(DegreeZero, DegreeOne, DegreeTwo)
+     */
+    fun <T> calculateNodeDegree(tree: BinaryTree<T>): Triple<Int, Int, Int> {
+        if (tree is NonEmpty) {
+            var condCount = 0
+            if (tree.left is NonEmpty)
+                condCount++
+            if (tree.right is NonEmpty)
+                condCount++
+            val v0 = when(condCount) {
+                0 -> Triple(1, 0, 0)
+                1 -> Triple(0, 1, 0)
+                2 -> Triple(0, 0, 1)
+                else -> throw AssertionError()
+            }
+            val v1 = calculateNodeDegree(tree.left)
+            val v2 = calculateNodeDegree(tree.right)
+            val result = Triple(v0.first + v1.first + v2.first,
+                v0.second + v1.second + v2.second,
+                v0.third + v1.third + v2.third)
+            return result
+        }else return Triple(0, 0, 0)
     }
 }
 
