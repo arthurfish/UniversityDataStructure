@@ -4,10 +4,10 @@ import collection.mutable.Stack
 import org.scalatest._
 import flatspec._
 import matchers._
-import PList_java_ver1.*
+import Expr4_PList_java_ver1.*
 
 class PListTest extends AnyFlatSpec with should.Matchers {
-  val intList = PList_java_ver1.createIntPList
+  val intList = Expr4_PList_java_ver1.createIntPList
 
   "A PList" should "display properly" in {
     val list = intList("1234")
@@ -15,7 +15,7 @@ class PListTest extends AnyFlatSpec with should.Matchers {
   }
 
   it should "constructed correctly" in {
-    assert(PList_java_ver1.createNumberPList[Int]("12345").toString === "12345")
+    assert(Expr4_PList_java_ver1.createNumberPList[Int]("12345").toString === "12345")
   }
 
   it should "be reversed correctly" in {
@@ -33,7 +33,7 @@ class PListTest extends AnyFlatSpec with should.Matchers {
   it should "foldLeft" in {
     val list = intList("1234")
     assert(list.foldLeft(0)((a, b) => a + b) === 10)
-    val list2 = PList_java_ver1.fromSeq("what")
+    val list2 = Expr4_PList_java_ver1.fromSeq("what")
     assert(list2.foldLeft("")((a, acc) => s"$acc $a") === " w h a t")
   }
 
@@ -44,7 +44,7 @@ class PListTest extends AnyFlatSpec with should.Matchers {
   }
 
   it should "repead single value" in {
-    val list = PList_java_ver1.fromRepeatedValue(0, 4)
+    val list = Expr4_PList_java_ver1.fromRepeatedValue(0, 4)
     assert(list.toString === "0000")
   }
 

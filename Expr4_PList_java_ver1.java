@@ -3,7 +3,7 @@
 
 import java.util.function.Supplier;
 
-public class PList_java_ver1 {
+public class Expr4_PList_java_ver1 {
     sealed interface List {
     }
     static final class Nil implements List {};
