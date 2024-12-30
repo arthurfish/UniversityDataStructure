@@ -155,9 +155,13 @@ class Problem6 {
     }
     return mergeTailrec(sortedList1, sortedList2, listOf())
   }
+
+  companion object{
+    @JvmStatic
+    fun main(args: Array<String>){
+      Problem6().interactiveListDemonstration(scanner = Scanner("Y\n1\n0\n2333\nN"), outputStream = System.out)
+      println(Problem6().mergeSortedList(listOf(1, 3, 5, 7), listOf(2, 4, 6)))
+    }
+  }
 }
 
-fun main(){
-  Problem6().interactiveListDemonstration(scanner = Scanner("Y\n1\n0\n2333\nN"), outputStream = System.out)
-  println(Problem6().mergeSortedList(listOf(1, 3, 5, 7), listOf(2, 4, 6)))
-}
